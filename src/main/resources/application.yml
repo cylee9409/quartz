@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: batchquartz
+  quartz:
+    job-store-type: memory # Quartz가 메모리를 사용하도록 설정
+    properties:
+      org:
+        quartz:
+          properties-file: classpath:quartz.properties
+
+jobs:
+  list:
+    - name: SimpleQuartzJob
+      jobClass: com.nhbank.batchquartz.job.SimpleQuartzJob
+      schedule: "*/5 * * * * ?"
+    - name: TestQuartzJob
+      jobClass: com.nhbank.batchquartz.job.TestQuartzJob
+      schedule: "*/10 * * * * ?"
+#    - name: job1
+#      jobClass: com.nhbank.batchquartz.job
+#      schedule: "*/5 * * * * ?"
