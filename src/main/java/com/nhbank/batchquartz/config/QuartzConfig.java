@@ -12,24 +12,28 @@ import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Configuration
-@RequiredArgsConstructor
 @Log4j2
 public class QuartzConfig {
 	
-    private final JobConfig jobConfig;
-    
+	@Autowired
+	private JobConfig jobConfig;
+	
+	@Autowired
+    private SpringJobFactory springJobFactory;
+
     @Bean
     public Scheduler scheduler() throws Exception {
     	
     	SchedulerFactory schedulerFactory = new StdSchedulerFactory();
     	Scheduler scheduler = schedulerFactory.getScheduler();
+    	scheduler.setJobFactory(springJobFactory);
     	
     	for (int i = 0; i < jobDetails().size(); i++) {
     		

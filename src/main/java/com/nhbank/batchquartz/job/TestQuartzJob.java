@@ -9,14 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("TestQuartzJob")
 public class TestQuartzJob implements Job {
 	
 	 private static final Logger logger = LoggerFactory.getLogger(TestQuartzJob.class);
 
 	    @Override
 	    public void execute(JobExecutionContext context) throws JobExecutionException {
-	        logger.info("TestQuartzJob : 💡 Quartz Job 실행됨! 현재 시간: {}", LocalDateTime.now());
+	        logger.info("TestQuartzJob.java: 💡 Quartz Job 실행됨! 현재 시간: {}", LocalDateTime.now());
 	    }
 
 }

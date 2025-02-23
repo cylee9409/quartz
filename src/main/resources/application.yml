@@ -17,10 +17,15 @@ spring:
         quartz:
           properties-file: classpath:quartz.properties
 
-logging:
-  level:
-    com.zaxxer.hikari: DEBUG
-    org.quartz: DEBUG
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+#logging:
+#  level:
+#    com.zaxxer.hikari: DEBUG
+#    org.quartz: DEBUG
 
 jobs:
   list:
@@ -30,6 +35,6 @@ jobs:
     - name: TestQuartzJob
       jobClass: com.nhbank.batchquartz.job.TestQuartzJob
       schedule: "*/10 * * * * ?"
-#    - name: job1
-#      jobClass: com.nhbank.batchquartz.job
-#      schedule: "*/5 * * * * ?"
+    - name: MybatisTestJob
+      jobClass: com.nhbank.batchquartz.job.MybatisTestJob
+      schedule: "*/3 * * * * ?"

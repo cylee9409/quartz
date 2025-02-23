@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("SimpleQuartzJob")
 public class SimpleQuartzJob implements Job {
 	
 	 private static final Logger logger = LoggerFactory.getLogger(SimpleQuartzJob.class);
