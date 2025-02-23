@@ -1,12 +1,26 @@
 spring:
   application:
-    name: batchquartz
+    name: AIGNbatch
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
   quartz:
-    job-store-type: memory # Quartz가 메모리를 사용하도록 설정
+#    job-store-type: memory # Quartz가 메모리를 사용하도록 설정
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
     properties:
       org:
         quartz:
           properties-file: classpath:quartz.properties
+
+logging:
+  level:
+    com.zaxxer.hikari: DEBUG
+    org.quartz: DEBUG
 
 jobs:
   list:

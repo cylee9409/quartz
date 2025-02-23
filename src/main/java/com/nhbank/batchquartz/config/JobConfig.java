@@ -11,12 +11,12 @@ import java.util.List;
 @Setter
 @Component
 @ConfigurationProperties(prefix = "jobs")
-public class JobProperties {
-    private List<JobConfig> list;
+public class JobConfig {
+    private List<JobInfo> list;
 
     @Getter
     @Setter
-    public static class JobConfig {
+    public static class JobInfo {
         private String name;
         private String jobClass;
         private String schedule;
