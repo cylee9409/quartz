@@ -6,5 +6,18 @@
     <select id="findAll" resultType="com.nhbank.batchquartz.dto.TestDTO">
         SELECT id, name, created_at FROM test
     </select>
+    
+    <select id="retrieveNextId" resultType="java.lang.Long">
+        SELECT max(id) + 1 FROM test
+    </select>
+    
+    <select id="countTestData" resultType="int">
+        SELECT count(*) FROM test
+    </select>
+    
+    <insert id="registerTest" parameterType="com.nhbank.batchquartz.dto.TestDTO">
+    	INSERT INTO TEST(id, name, created_at) 
+    	VALUES (#{id}, #{name}, now())
+    </insert>
 
 </mapper>
